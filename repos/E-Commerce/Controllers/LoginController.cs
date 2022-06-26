@@ -23,6 +23,12 @@ namespace E_Commerce.Controllers
             iJWTMangerRepository = _iJWTMangerRepository;
         }
 
+        [HttpGet]
+        public IEnumerable<TblLogin> GetLogin()
+        {
+            return db.TblLogins;
+        }
+
         [HttpPost]
         [Route("login")]
         public IActionResult Login(LoginViewModel loginViewModel)

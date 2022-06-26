@@ -5,32 +5,33 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
 namespace E_Commerce.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProdcutController : ControllerBase
+
+    public class CatController : ControllerBase
     {
         ECommerceDB1Context db;
-        public ProdcutController(ECommerceDB1Context _db)
+        public CatController(ECommerceDB1Context _db)
         {
             db = _db;
         }
+
+
         [HttpGet]
-        public IEnumerable<TblProduct> GetProducts()
+        public IEnumerable<TblCategory> GetCategorys()
         {
-            return db.TblProducts;
+            return db.TblCategories;
         }
 
         [HttpPost]
-        public string Post([FromBody] TblProduct tblproduct)
+        public string Post([FromBody] TblCategory tblcategory)
         {
-            db.TblProducts.Add(tblproduct);
+            db.TblCategories.Add(tblcategory);
             db.SaveChanges();
             return "success";
         }
-
 
     }
 }
